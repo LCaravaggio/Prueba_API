@@ -8,7 +8,7 @@ print('model loaded hola')
 def health_check():
     return 'OK'
 
-@app.route('/api/v1/w2v', methods=['POST'])
+@app.route('/', methods=['POST'])
 
 if __name__ == "__main__":
     # Only for debugging while developing
