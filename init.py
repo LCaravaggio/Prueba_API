@@ -16,3 +16,7 @@ CORS(app)
 def welcome():
     return (
         f"Welcome to the Hello World API!<br/>")
+
+
+if __name__ == '__main__':
+    app.run()
