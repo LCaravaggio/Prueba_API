@@ -1,5 +1,13 @@
 # app.py
 from flask import Flask, request, jsonify
+
+from bs4 import BeautifulSoup
+import requests
+import time
+import datetime 
+
+
+
 app = Flask(__name__)
 
 @app.route('/getmsg/', methods=['GET'])
@@ -54,4 +62,6 @@ if __name__ == '__main__':
 
 
 def fun():
-	return "hola"
+	now = datetime.datetime.now()
+	nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))	
+	return nw
