@@ -62,6 +62,7 @@ if __name__ == '__main__':
 
 
 def fun():
-	now = datetime.datetime.now()
-	nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))	
-	return nw
+	with open(nw + '.csv', 'w', newline="\n", encoding='ISO-8859-1') as f:
+		f.write(a)
+		return f
+	f.close
