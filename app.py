@@ -61,4 +61,5 @@ if __name__ == '__main__':
 
 def fun():
 	r = requests.get('https://www.vea.com.ar/milanesa-nalga-5/p')
-	return r.text
+	soup = BeautifulSoup(r.content, 'html.parser')
+	return soup
