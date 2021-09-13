@@ -63,4 +63,4 @@ def fun():
 	r = requests.get('https://www.vea.com.ar/milanesa-nalga-5/p')
 	soup = BeautifulSoup(r.content, 'html.parser')	
 	#a=str(soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";")
-	return "holi"
+	return soup.span
