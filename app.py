@@ -57,10 +57,10 @@ if __name__ == '__main__':
 
 
 def fun():
-	#site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
-	#web_request = Request(site, headers={'User-Agent':'Mozilla/5.0'})
+	site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
+	web_request = Request(site, headers={'User-Agent':'Mozilla/5.0'})
 
-	#web_page = urlopen(web_request).read()
+	web_page = urlopen(web_request).read()
 	#soup = BeautifulSoup(web_page, 'html.parser')
 	#return soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";"
-	return "hola"
+	return web_page
