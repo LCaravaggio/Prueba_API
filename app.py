@@ -76,6 +76,6 @@ def fun():
 	    a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("PRECIOCONTADO","") + "\n" 
 
     except:
-      a+="\n"
+      a+="ERROR+\n"
 
   return a
