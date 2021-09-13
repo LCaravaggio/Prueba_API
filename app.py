@@ -1,8 +1,7 @@
 # app.py
 from flask import Flask, request, jsonify
 
-from urllib import 
-from request import Request, urlopen
+from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
