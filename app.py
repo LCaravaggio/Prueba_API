@@ -60,9 +60,22 @@ if __name__ == '__main__':
     app.run(threaded=True, port=5000)
 
 
-
 def fun():
-	with open(nw + '.csv', 'w', newline="\n", encoding='ISO-8859-1') as f:
-		f.write(a)
-		return f
-	f.close
+  a=""
+  listacorta={"https://www.vea.com.ar/milanesa-nalga-5/p",
+"https://www.vea.com.ar/bife-de-chorizo-2/p",}
+    
+  for l in listacorta: 
+    try:
+	    r = requests.get(l.replace("\n",""))
+	    soup = BeautifulSoup(r.content, 'html.parser')
+	    #print(l.replace("\n",""))
+	    a += l.replace("\n","") + ";"
+	    a += soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";"
+	    a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";" 
+	    a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("PRECIOCONTADO","") + "\n" 
+
+    except:
+      a+="\n"
+
+  return str(a)
