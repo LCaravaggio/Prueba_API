@@ -80,7 +80,7 @@ pyquery
 pyrsistent
 python-dateutil
 pytz
-pywinpty
+
 pyzmq
 requests
 retrying
