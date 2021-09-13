@@ -78,4 +78,4 @@ def fun():
     except:
       a+="\n"
 
-  return str(a)
+  return a
