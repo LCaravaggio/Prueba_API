@@ -10,3 +10,6 @@ beautifulsoup4
 datetime
 lxml
 urllib3
+w3lib
+webencodings
+websockets
