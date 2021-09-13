@@ -60,5 +60,5 @@ if __name__ == '__main__':
 
 
 def fun():
-	r = requests.get('http://httpbin.org/status/418')
+	r = requests.get('https://www.vea.com.ar/milanesa-nalga-5/p')
 	return r.text
