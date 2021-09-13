@@ -6,7 +6,7 @@ Jinja2==2.10.1
 MarkupSafe==1.1.1
 Werkzeug==0.15.6
 
-bs4
-request
+bs4==4.6.3
+requests==2.23.0
 time
 datetime
