@@ -8,5 +8,4 @@ Werkzeug==0.15.6
 
 bs4
 requests==2.23.0
-time
 datetime
