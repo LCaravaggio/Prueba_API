@@ -60,10 +60,6 @@ if __name__ == '__main__':
 
 
 def fun():
-	a=""
 	r = requests.get('https://www.vea.com.ar/milanesa-nalga-5/p')
 	soup = BeautifulSoup(r.content, 'html.parser')	
-	a += soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";"
-	a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";" 
-	a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("PRECIOCONTADO","") + "\n" 
-	return a
+	return soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";"
