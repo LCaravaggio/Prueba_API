@@ -1,11 +1,8 @@
 # app.py
 from flask import Flask, request, jsonify
 
+from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
-import requests
-import datetime 
-import lxml
-
 
 app = Flask(__name__)
 
@@ -60,7 +57,9 @@ if __name__ == '__main__':
 
 
 def fun():
-	r = requests.get('https://www.vea.com.ar/milanesa-nalga-5/p')
-	soup = BeautifulSoup(r.content, 'html.parser')	
-	#a=str(soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";")
-	return soup.span
+	site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
+	web_request = Request(site, headers={'User-Agent':'Mozilla/5.0'})
+
+	web_page = urlopen(web_request).read()
+	soup = BeautifulSoup(web_page, 'html.parser')
+	return soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";"
