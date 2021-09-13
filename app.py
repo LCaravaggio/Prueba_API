@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify
 
 from bs4 import BeautifulSoup
 import requests
-import time
 import datetime 
 
 
@@ -62,9 +61,8 @@ if __name__ == '__main__':
 
 def fun():
   a=""
-  listacorta={"https://www.vea.com.ar/milanesa-nalga-5/p",
-"https://www.vea.com.ar/bife-de-chorizo-2/p",}
-    
+  listacorta={"https://www.vea.com.ar/milanesa-nalga-5/p","https://www.vea.com.ar/bife-de-chorizo-2/p",}
+	    
   for l in listacorta: 
     try:
 	    r = requests.get(l.replace("\n",""))
@@ -76,6 +74,6 @@ def fun():
 	    a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("PRECIOCONTADO","") + "\n" 
 
     except:
-      a+="ERROR+\n"
+      a+="ERROR \n"
 
   return a
