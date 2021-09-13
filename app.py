@@ -61,5 +61,4 @@ if __name__ == '__main__':
 
 def fun():
 	r = requests.get('http://httpbin.org/status/418')
-	print(r.text)
-	return HttpResponse('<pre>' + r.text + '</pre>') 
+	return r.text
