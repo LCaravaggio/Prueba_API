@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from flask_cors import cross_origin
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, Response
 
 import pandas as pd
 import requests
