@@ -12,12 +12,12 @@ app = Flask(__name__)
 @cross_origin()
 def index():
   if request.method == 'POST':
-    #site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
-    #r = requests.get(site)
-    #soup = BeautifulSoup(r.content, 'html.parser')
     return "soup"
   else:
-    return "get"
+    site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
+    r = requests.get(site)
+    #soup = BeautifulSoup(r.content, 'html.parser')
+    return "get 2"
 
 
 if __name__ == "__main__":
