@@ -22,8 +22,8 @@ def index():
     f= open("archivo.txt","w+")
     f.write(b)
     f.close
-
-    return str(b)
+    return f
+    #return str(b)
     
 
 
