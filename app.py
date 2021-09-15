@@ -1,8 +1,12 @@
 from bs4 import BeautifulSoup
 from flask_cors import cross_origin
-from supp import company_financials
+
 from pretty_html_table import build_table
 from flask import Flask, render_template, request
+
+import pandas as pd
+from bs4 import BeautifulSoup
+from urllib.request import urlopen, Request
 
 app = Flask(__name__)
 
