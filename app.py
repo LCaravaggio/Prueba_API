@@ -19,8 +19,12 @@ def index():
     for l in lista(): 
         b+=scrap(l)
     
-    #return str(b)
-    return archivo(b)
+    f= open("archivo.txt","w+")
+    f.write(b)
+    f.close
+
+    return str(b)
+    
 
 
 if __name__ == "__main__":
