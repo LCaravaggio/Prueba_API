@@ -28,7 +28,6 @@ if __name__ == "__main__":
 
 
 def scrap(site):
-    site = l
     r = requests.get(site)
     b=""
 
