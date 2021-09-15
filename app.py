@@ -13,20 +13,25 @@ app = Flask(__name__)
 @cross_origin()
 def index():
   if request.method == 'POST':
-    return "soup"
+    return "POST"
   else:
-    site = 'https://www.vea.com.ar/queso-sardo-la-paulina/p'
-    r = requests.get(site)
-    a="hola 5"
-    b=""
-
-
-    soup = BeautifulSoup(r.content, 'html.parser')
-    b = soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text + ";"
-    #b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text + "," 
-    #b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text 
+    a="hola 6"   
+    a=scrap()
     return str(a)
 
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
+
+
+
+def scrap():
+    site = 'https://www.vea.com.ar/queso-sardo-la-paulina/p'
+    r = requests.get(site)
+    b=""
+
+    soup = BeautifulSoup(r.content, 'html.parser')
+    b += soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text + ";"
+    b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text + "," 
+    b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text 
+    return b

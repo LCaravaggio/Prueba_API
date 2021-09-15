@@ -9,6 +9,7 @@ gunicorn==20.0.4
 idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.2
+lxml
 MarkupSafe==1.1.1
 numpy==1.19.2
 pandas==1.1.2
