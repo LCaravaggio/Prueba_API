@@ -15,9 +15,10 @@ def index():
   if request.method == 'POST':
     return "POST"
   else:
-
+    b=""
     for l in lista(): 
         b+=scrap(l)
+    
     return str(b)
 
 
@@ -26,7 +27,7 @@ if __name__ == "__main__":
 
 
 
-def scrap(l):
+def scrap(site):
     site = l
     r = requests.get(site)
     b=""
