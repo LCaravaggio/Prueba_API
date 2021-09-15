@@ -21,7 +21,7 @@ def index():
         try: 	
           b+=scrap(l)
         except: 
-          _		
+          _=""		
 
     
     now = datetime.datetime.now()
