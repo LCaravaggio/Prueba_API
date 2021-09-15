@@ -17,13 +17,13 @@ def index():
   else:
     site = 'https://www.vea.com.ar/queso-sardo-la-paulina/p'
     r = requests.get(site)
-    a=""
+    a="hola 4"
 
     soup = BeautifulSoup(r.content, 'html.parser')
     #a += soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text + ";"
     #a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text + "," 
     #a += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text 
-    return str(soup)
+    return str(a)
 
 
 if __name__ == "__main__":
