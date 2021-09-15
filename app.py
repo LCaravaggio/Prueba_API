@@ -26,8 +26,8 @@ def index():
     f = open("scrap.txt", "w")
     f.write(b)
 
-    #return send_file(f.name, mimetype="csv", attachment_filename=file.name, as_attachment=True)   
-    return str(b)
+    return send_file(f.name, mimetype="csv", attachment_filename=f.name, as_attachment=True)   
+    #return str(b)
     
 
 
