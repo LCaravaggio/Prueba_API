@@ -16,8 +16,8 @@ def index():
     return "POST"
   else:
     a="hola 6"   
-    #b=scrap()
-    return str(a)
+    b=scrap()
+    return str(b)
 
 
 if __name__ == "__main__":
@@ -31,7 +31,7 @@ def scrap():
     b=""
 
     soup = BeautifulSoup(r.content, 'html.parser')
-    b += soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text + ";"
-    b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text + "," 
-    b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text 
-    return b
+    #b += soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text + ";"
+    #b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text + "," 
+    #b += soup.find_all('span', {'class':'vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price'})[0].text 
+    return r.content
