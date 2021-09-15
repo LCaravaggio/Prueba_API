@@ -26,7 +26,7 @@ def index():
     f = open("scrap.txt", "w")
     f.write(b)
 
-    return send_file(f.name, mimetype="txt", attachment_filename="scrap.txt", as_attachment=True)   
+    return send_file(f, mimetype="txt", attachment_filename="scrap.txt", as_attachment=True, , cache_timeout=0)   
     #return str(b)
     
 
