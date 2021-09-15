@@ -19,12 +19,17 @@ def index():
     for l in lista(): 
         b+=scrap(l)
     
-    return str(b)
+    #return str(b)
+    #return archivo(b)
 
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
 
+
+def archivo(b):
+  File_object = open(r"Archivo.txt","w")
+  return File_object.write(b)
 
 
 def scrap(site):
