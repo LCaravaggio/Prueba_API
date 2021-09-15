@@ -20,6 +20,8 @@ def index():
     for l in lista(): 
         try: 	
           b+=scrap(l)
+        except: 
+          pass
 
 
     now = datetime.datetime.now()
