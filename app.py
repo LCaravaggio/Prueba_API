@@ -21,9 +21,8 @@ def index():
         try: 	
           b+=scrap(l)
         except: 
-          a=""		
+          return "hubo un error"
 
-    
     now = datetime.datetime.now()
     sumar=datetime.timedelta(hours = -3)
     now=now+sumar
