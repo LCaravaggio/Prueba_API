@@ -15,7 +15,7 @@ def index():
   if request.method == 'POST':
     return "soup"
   else:
-    site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
+    site = 'https://www.vea.com.ar/queso-sardo-la-paulina/p'
     r = requests.get(site)
     a=""
 
