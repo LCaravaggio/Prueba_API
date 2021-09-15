@@ -16,7 +16,7 @@ def index():
     return "POST"
   else:
     a="hola 6"   
-    a=scrap()
+    #b=scrap()
     return str(a)
 
 
