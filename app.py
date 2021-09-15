@@ -31,9 +31,9 @@ def scrap():
     b=""
 
     soup = BeautifulSoup(r.content, 'html.parser')
-    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price"}).text
+    #b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price"}).text
     b+=";"
     b+=soup.find("span", {"class": "vtex-store-components-3-x-productBrand "}).text
     b+=","
-    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price"}).text    
+    #b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price"}).text    
     return b
