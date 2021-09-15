@@ -20,13 +20,10 @@ def index():
     for l in lista(): 
         b+=scrap(l)
     
-    now = datetime.datetime.now()
-    nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
+    #now = datetime.datetime.now()
+    #nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
+    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename=myplot.csv"})
 
-    with open("output.txt", 'w') as file:
-            file.write("prueba")
-            file_to_be_sent = open("output.txt", 'rb')
-            return send_file(file_to_be_sent, mimetype="text/plain", as_attachment=True, cache_timeout=0)
     #return str(b)
     
 
