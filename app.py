@@ -21,6 +21,8 @@ def index():
         b+=scrap(l)
     
     now = datetime.datetime.now()
+    sumar=datetime.timedelta(hours = -5)
+    now=now+sumar
     nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
     return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+nw+".csv"})
  
