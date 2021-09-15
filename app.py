@@ -22,7 +22,7 @@ def index():
     f= open("archivo.txt","w+")
     f.write(b)
     #f.close
-    return send_file(f.name, mimetype="txt", attachment_filename="archivo.txt", as_attachment=True)   
+    return send_file(f, mimetype="txt", attachment_filename="archivo.txt", as_attachment=True)   
     #return str(b)
     
 
