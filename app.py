@@ -26,7 +26,7 @@ def index():
     with open("output.txt", 'w') as file:
             file.write("prueba")
             file_to_be_sent = open("output.txt", 'rb')
-            return send_file(file_to_be_sent, as_attachment=True, cache_timeout=0)
+            return send_file(file_to_be_sent, mimetype="text/plain", as_attachment=True, cache_timeout=0)
     #return str(b)
     
 
