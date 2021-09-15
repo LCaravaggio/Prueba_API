@@ -18,10 +18,14 @@ def index():
   else:
     b=""
     for l in lista(): 
-        b+=scrap(l)
+        try: 	
+          b+=scrap(l)
+        except: 
+          _		
+
     
     now = datetime.datetime.now()
-    sumar=datetime.timedelta(hours = -5)
+    sumar=datetime.timedelta(hours = -3)
     now=now+sumar
     nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
     return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+nw+".csv"})
