@@ -17,8 +17,8 @@ def index():
   else:
     site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
     r = requests.get(site)
-    #soup = BeautifulSoup(r.content, 'html.parser')
-    return "get 2"
+    soup = BeautifulSoup(r.content, 'html.parser')
+    return "get 3"
 
 
 if __name__ == "__main__":
