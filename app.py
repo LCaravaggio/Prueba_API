@@ -20,14 +20,14 @@ def index():
     for l in lista(): 
         b+=scrap(l)
     
-    #now = datetime.datetime.now()
-    #nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
+    now = datetime.datetime.now()
+    nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
 
-    f = open("scrap.txt", "w")
-    f.write(b)
+    #f = open("scrap.txt", "w")
+    #f.write(b)
 
-    return send_file(f.name, mimetype="csv", attachment_filename=file.name, as_attachment=True)   
-    #return str(b)
+    #return send_file(f.name, mimetype="csv", attachment_filename=file.name, as_attachment=True)   
+    return str(b)
     
 
 
