@@ -17,11 +17,12 @@ def index():
     return "POST"
   else:
     b=""
+    a=""
     for l in lista(): 
         try: 	
           b+=scrap(l)
         except: 
-          pass
+          a+=l
 
 
     now = datetime.datetime.now()
