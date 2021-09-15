@@ -23,8 +23,8 @@ def index():
     now = datetime.datetime.now()
     nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
 
-    #f = open("scrap.txt", "w")
-    #f.write(b)
+    f = open("scrap.txt", "w")
+    f.write(b)
 
     #return send_file(f.name, mimetype="csv", attachment_filename=file.name, as_attachment=True)   
     return str(b)
