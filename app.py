@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from flask_cors import cross_origin
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 
 import pandas as pd
 import requests
@@ -22,7 +22,7 @@ def index():
     f= open("archivo.txt","w+")
     f.write(b)
     #f.close
-    return f
+    return send_file f
     #return str(b)
     
 
