@@ -22,7 +22,7 @@ def index():
     
     #now = datetime.datetime.now()
     #nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
-    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename=myplot.csv"})
+    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+"VEA "+nw+".csv"})
 
     #return str(b)
     
