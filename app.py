@@ -20,10 +20,10 @@ def index():
     for l in lista(): 
         b+=scrap(l)
     
-    now = datetime.datetime.now()
-    nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
+    #now = datetime.datetime.now()
+    #nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
 
-    with open(nw + '.csv', 'w', newline="\n", encoding='ISO-8859-1') as f:
+    with open('archivo.csv', 'w', newline="\n", encoding='ISO-8859-1') as f:
         f.write(b)
 
     return send_file(f.name, mimetype="csv", attachment_filename=file.name, as_attachment=True)   
