@@ -20,12 +20,10 @@ def index():
     for l in lista(): 
         b+=scrap(l)
     
-    #now = datetime.datetime.now()
-    #nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
-    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+"VEA "+nw+".csv"})
-
-    #return str(b)
-    
+    now = datetime.datetime.now()
+    nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
+    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+nw+".csv"})
+ 
 
 
 if __name__ == "__main__":
