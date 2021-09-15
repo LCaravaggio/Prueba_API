@@ -61,5 +61,6 @@ def fun():
 	web_request = Request(site, headers={'User-Agent':'Mozilla/5.0'})
 
 	web_page = urlopen(web_request).read()
-	soup = BeautifulSoup(web_page, 'html.parser')
-	return soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";"
+	#soup = BeautifulSoup(web_page, 'html.parser')
+	#return soup.find_all('span', {'class':'vtex-store-components-3-x-productBrand '})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";"
+	return "hola"
