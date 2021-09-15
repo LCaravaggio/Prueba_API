@@ -18,7 +18,7 @@ def index():
     site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
     r = requests.get(site)
     soup = BeautifulSoup(r.content, 'html.parser')
-    return "get 3"
+    return soup.find_all('span', {'class':'vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price'})[0].text.replace(" ","").replace("\n","").replace("\r","") + ";" 
 
 
 if __name__ == "__main__":
