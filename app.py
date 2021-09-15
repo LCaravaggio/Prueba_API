@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 from flask_cors import cross_origin
-from pretty_html_table import build_table
 from flask import Flask, render_template, request
 
 import pandas as pd
@@ -13,10 +12,10 @@ app = Flask(__name__)
 @cross_origin()
 def index():
     if request.method == 'POST':
-        site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
-	r = requests.get(site)
-	soup = BeautifulSoup(r.content, 'html.parser')	
-        return soup
+	site = 'https://www.vea.com.ar/bife-de-chorizo-2/p'
+		r = requests.get(site)
+		soup = BeautifulSoup(r.content, 'html.parser')	
+		return soup
     else:
         return "get"
 
