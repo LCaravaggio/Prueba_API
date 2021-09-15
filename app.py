@@ -23,11 +23,10 @@ def index():
     now = datetime.datetime.now()
     nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
 
-    f = open("output.txt", "w")
-    f.write(b)
-
-    file_to_be_sent = open("output.txt", 'rb')
-    return send_file(file_to_be_sent, as_attachment=True, cache_timeout=0)
+    with open("output.txt", 'w') as file:
+            file.write(b)
+            file_to_be_sent = open("output.txt", 'rb')
+            return send_file(file_to_be_sent, as_attachment=True, cache_timeout=0)
     #return str(b)
     
 
