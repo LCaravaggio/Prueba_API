@@ -20,7 +20,7 @@ def index():
         b+=scrap(l)
     
     #return str(b)
-    #return archivo(b)
+    return archivo(b)
 
 
 if __name__ == "__main__":
