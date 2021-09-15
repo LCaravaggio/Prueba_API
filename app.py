@@ -3,6 +3,7 @@ from flask_cors import cross_origin
 from flask import Flask, render_template, request
 
 import pandas as pd
+import requests
 from urllib.request import urlopen, Request
 
 app = Flask(__name__)
