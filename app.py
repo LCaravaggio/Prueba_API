@@ -15,8 +15,9 @@ def index():
   if request.method == 'POST':
     return "POST"
   else:
-    a="hola 6"   
-    b=scrap()
+
+    for l in lista(): 
+        b+=scrap(l)
     return str(b)
 
 
@@ -25,8 +26,8 @@ if __name__ == "__main__":
 
 
 
-def scrap():
-    site = 'https://www.vea.com.ar/queso-sardo-la-paulina/p'
+def scrap(l):
+    site = l
     r = requests.get(site)
     b=""
 
@@ -36,6 +37,14 @@ def scrap():
     b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price"}).text
     b+=","
     b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price"}).text    
-
+    b+="\n"
     
     return b
+
+
+def lista(): 
+    return {
+"https://www.vea.com.ar/galletitas-lincoln-angry-birds/p",
+"https://www.vea.com.ar/galletitas-criollitas-de-agua-x100gr/p",
+"https://www.vea.com.ar/galletitas-criollitas-x400g/p"
+}
