@@ -19,10 +19,10 @@ def index():
     for l in lista(): 
         b+=scrap(l)
     
-    f= open("archivo.txt","w+")
+    f= open("archivo.txt","w")
     f.write(b)
     #f.close
-    return send_file(f, mimetype="txt", attachment_filename="archivo.txt", as_attachment=True)   
+    return send_file("archivo.txt", mimetype="txt", attachment_filename="archivo.txt", as_attachment=True)   
     #return str(b)
     
 
