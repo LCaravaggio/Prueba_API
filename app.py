@@ -17,7 +17,6 @@ def index():
     return "POST"
   else:
     b=""
-    a=""
     for l in lista(): 	
           try:
             b+=scrap(l)
@@ -56,6 +55,15 @@ def scrap(site):
     b+="\n"
 
     return b
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    return "500 error"
+
+@app.errorhandler(404)
+def not_found(error):
+    return "404 error",404
 
 
 def lista(): 
