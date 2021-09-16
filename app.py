@@ -7,6 +7,11 @@ import requests
 from urllib.request import urlopen, Request
 import datetime 
 
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
+
 app = Flask(__name__)
 
 
@@ -19,7 +24,7 @@ def index():
     b=""
     for l in lista(): 	
           try:
-            b+=scrap(l)
+            b+=q.enqueue(scrap, l)
           except:
             b+="/n"
        
