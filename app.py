@@ -39,7 +39,7 @@ def index():
 
 @app.route("/api/<query>")
 def search_query(query=None):
-	return(querry)
+	return(str(querry))
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
