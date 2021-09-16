@@ -1,51 +1,76 @@
-# app.py
-from flask import Flask, request, jsonify
+from bs4 import BeautifulSoup
+from flask_cors import cross_origin, CORS
+from flask import Flask, render_template, request, send_file, Response
+
+import pandas as pd
+import requests
+from urllib.request import urlopen, Request
+import datetime 
+
 app = Flask(__name__)
+CORS(app)
 
-@app.route('/getmsg/', methods=['GET'])
-def respond():
-    # Retrieve the name from url parameter
-    name = request.args.get("name", None)
-
-    # For debugging
-    print(f"got name {name}")
-
-    response = {}
-
-    # Check if user sent a name at all
-    if not name:
-        response["ERROR"] = "no name found, please send a name."
-    # Check if the user entered a number not a name
-    elif str(name).isdigit():
-        response["ERROR"] = "name can't be numeric."
-    # Now the user entered a valid name
-    else:
-        response["MESSAGE"] = f"Welcome {name} to our awesome platform!!"
-
-    # Return the response in json format
-    return jsonify(response)
-
-@app.route('/post/', methods=['POST'])
-def post_something():
-    param = request.form.get('name')
-    print(param)
-    # You can add the test cases you made in the previous function, but in our case here you are just testing the POST functionality
-    if param:
-        return jsonify({
-            "Message": f"Welcome {name} to our awesome platform!!",
-            # Add this option to distinct the POST request
-            "METHOD" : "POST"
-        })
-    else:
-        return jsonify({
-            "ERROR": "no name found, please send a name."
-        })
-
-# A welcome message to test our server
 @app.route('/')
+@cross_origin()
 def index():
-    return "<h1>Welcome to our server !!</h1>"
+    b=""
+    for l in lista(): 	
+        try:
+            b+=scrap(l)
+        except:
+            b+="/n"
+    now = datetime.datetime.now()
+    sumar=datetime.timedelta(hours = -3)
+    now=now+sumar
+    nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
+    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+nw+".csv"})
+ 
 
-if __name__ == '__main__':
-    # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port=5000)
+
+
+@app.route("/api/search/<query>")
+def search_queryA(query=None):
+    b=""
+    l="https://www.vea.com.ar/"+query+"/p"
+    try:
+        b+=scrap(l)
+        return (b)
+    except Exception as e:
+        return ("Error API: "+f"{e}" + query)
+
+@app.route("/api/<query>")
+def search_query(query=None):
+	return(query)
+
+if __name__ == "__main__":
+    app.run(port=8000, debug=True)
+
+
+def scrap(site):
+    r = requests.get(site)
+    b=""
+    
+    soup = BeautifulSoup(r.content, 'html.parser')
+    b+=soup.find("span", {"class": "vtex-breadcrumb-1-x-term vtex-breadcrumb-1-x-term--breadcrumb-style ph2 c-on-base"}).text    
+    b+=";"
+    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price"}).text
+    b+=","
+    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price"}).text    
+    b+="\n"
+
+    return b
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    return "500 error"
+
+@app.errorhandler(404)
+def not_found(error):
+    return "404 error",404
+
+
+def lista(): 
+    return {"https://www.vea.com.ar/galletitas-lincoln-angry-birds/p",
+"https://www.vea.com.ar/galletitas-criollitas-de-agua-x100gr/p"
+}
