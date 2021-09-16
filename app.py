@@ -34,15 +34,14 @@ def index():
 
 
 
-@app.route("/api/search/<query>")
-def search_query(query=None):
-b=""
-    try:
-        b+=scrap(l)
-        return (b)
-
-    except Exception as e:
-        return (f"{e}")
+#@app.route("/api/search/<query>")
+#def search_query(query=None):
+#b=""
+#    try:
+#        b+=scrap(l)
+#        return (b)
+#    except Exception as e:
+#        return (f"{e}")
 
 
 
