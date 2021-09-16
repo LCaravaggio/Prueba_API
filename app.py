@@ -38,6 +38,10 @@ def search_query(query=None):
         return ("Error API: "+f"{e}" + querry)
 
 
+@app.route("/api/<query>")
+def search_query2(query=None):
+	return(querry)
+
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
