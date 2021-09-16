@@ -9,6 +9,7 @@ import datetime
 
 from rq import Queue
 from worker import conn
+from utils import scrap
 
 q = Queue(connection=conn)
 
@@ -41,34 +42,6 @@ def index():
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
 
-
-def archivo(b):
-  File_object = open(r"Archivo.txt","w")
-  return File_object.write(b)
-
-
-def scrap(site):
-    r = requests.get(site)
-    b=""
-    
-    soup = BeautifulSoup(r.content, 'html.parser')
-    b+=soup.find("span", {"class": "vtex-breadcrumb-1-x-term vtex-breadcrumb-1-x-term--breadcrumb-style ph2 c-on-base"}).text    
-    b+=";"
-    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price"}).text
-    b+=","
-    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price"}).text    
-    b+="\n"
-
-    return b
-
-
-@app.errorhandler(500)
-def internal_error(error):
-    return "500 error"
-
-@app.errorhandler(404)
-def not_found(error):
-    return "404 error",404
 
 
 def lista(): 
