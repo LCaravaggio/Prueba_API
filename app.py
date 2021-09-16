@@ -8,7 +8,7 @@ from urllib.request import urlopen, Request
 import datetime 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 @cross_origin()
@@ -29,7 +29,6 @@ def index():
 
 
 @app.route("/api/search/<query>")
-@cross_origin()
 def search_query(query=None):
     b=""
     try:
@@ -40,7 +39,6 @@ def search_query(query=None):
 
 
 @app.route("/api/<query>")
-@cross_origin()
 def search_query(query=None):
 	return(querry)
 
