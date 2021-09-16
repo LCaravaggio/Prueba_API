@@ -18,11 +18,9 @@ def index():
   else:
     b=""
     a=""
-    for l in lista(): 
-        try: 	
+    for l in lista(): 	
           b+=scrap(l)
-        except: 
-          a+=l
+
 
 
     now = datetime.datetime.now()
