@@ -31,8 +31,9 @@ def index():
 @app.route("/api/search/<query>")
 def search_queryA(query=None):
     b=""
+    l="https://www.vea.com.ar/"+query+"/p"
     try:
-        b+=scrap(query)
+        b+=scrap(l)
         return (b)
     except Exception as e:
         return ("Error API: "+f"{e}" + query)
