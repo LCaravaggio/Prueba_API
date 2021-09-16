@@ -22,7 +22,8 @@ def index():
           try:
             b+=scrap(l)
           except:
-            _
+            b+="/n"
+            continue
           else:
             _          
 
