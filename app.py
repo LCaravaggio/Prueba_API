@@ -35,7 +35,7 @@ def search_query(query=None):
         b+=scrap(query)
         return (b)
     except Exception as e:
-        return (f"{e}")
+        return ("Error API: "+f"{e}" + querry)
 
 
 
