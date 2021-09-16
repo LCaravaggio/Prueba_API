@@ -29,6 +29,7 @@ def index():
 
 
 @app.route("/api/search/<query>")
+@cross_origin()
 def search_query(query=None):
     b=""
     try:
@@ -39,7 +40,8 @@ def search_query(query=None):
 
 
 @app.route("/api/<query>")
-def search_query2(query=None):
+@cross_origin()
+def search_query(query=None):
 	return(querry)
 
 
