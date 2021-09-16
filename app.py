@@ -23,9 +23,7 @@ def index():
             b+=scrap(l)
           except:
             b+="/n"
-            continue
-          else:
-            _          
+       
 
 
     now = datetime.datetime.now()
