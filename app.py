@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from flask_cors import cross_origin
+from flask_cors import cross_origin, CORS
 from flask import Flask, render_template, request, send_file, Response
 
 import pandas as pd
@@ -44,11 +44,6 @@ def index():
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
-
-
-def archivo(b):
-  File_object = open(r"Archivo.txt","w")
-  return File_object.write(b)
 
 
 def scrap(site):
