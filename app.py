@@ -13,17 +13,17 @@ app = Flask(__name__)
 @app.route('/')
 @cross_origin()
 def index():
-b=""
-for l in lista(): 	
-    try:
-        b+=scrap(l)
-    except:
-        b+="/n"
-now = datetime.datetime.now()
-sumar=datetime.timedelta(hours = -3)
-now=now+sumar
-nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
-return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+nw+".csv"})
+    b=""
+    for l in lista(): 	
+        try:
+            b+=scrap(l)
+        except:
+            b+="/n"
+    now = datetime.datetime.now()
+    sumar=datetime.timedelta(hours = -3)
+    now=now+sumar
+    nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
+    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+nw+".csv"})
  
 
 
