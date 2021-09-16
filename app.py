@@ -32,7 +32,7 @@ def index():
 def search_query(query=None):
     b=""
     try:
-        b+=scrap(l)
+        b+=scrap(query)
         return (b)
     except Exception as e:
         return (f"{e}")
