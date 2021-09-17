@@ -644,7 +644,7 @@ def search_queryB(querycoto=None):
     "A-00013306-00013306-200"]
 
 
-    newquery="https://www.cotodigital3.com.ar/sitios/cdigi/producto/"+query+"/_/"+lista2[lista1.index(query)] 
+    newquery="https://www.cotodigital3.com.ar/sitios/cdigi/producto/"+querycoto+"/_/"+lista2[lista1.index(querycoto)] 
     try:
         b+=scrapcoto(newquery)
         return (b)
