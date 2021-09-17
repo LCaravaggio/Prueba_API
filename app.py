@@ -27,6 +27,7 @@ def search_queryA(query=None):
     except Exception as e:
         return ("no se pudo acceder")
 
+
 @app.route("/coto/search/<querycoto>")
 def search_queryA(querycoto=None):
     b=""
@@ -59,15 +60,14 @@ def scrapvea(site):
     return b
 
 
-def scrapcoto(sitecoto):
-    r = requests.get(sitecoto)
-    b=""
-    
-    soup = BeautifulSoup(r.content, 'html.parser')
-    b+=soup.find("h1", {"class": "product_page"}).text.replace(" ","").replace("\n","").replace("\r","").replace(";","").replace("\t","") + ";"     
-    b+=soup.find("span", {"class": "atg_store_newPrice"}).text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("\t","").replace("PRECIOCONTADO","").replace("PRECIOREGULAR","") + "\n" 
-    b+="\n"
-    return b
+#def scrapcoto(sitecoto):
+#    r = requests.get(sitecoto)
+#    b=""
+#    
+#    soup = BeautifulSoup(r.content, 'html.parser')
+#    b+=soup.find("h1", {"class": "product_page"}).text.replace(" ","").replace("\n","").replace("\r","").replace(";","").replace("\t","") + ";"     
+#    b+=soup.find("span", {"class": "atg_store_newPrice"}).text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("\t","").replace("PRECIOCONTADO","").replace("PRECIOREGULAR","") + "\n" 
+#    return b
 
 
 @app.errorhandler(500)
