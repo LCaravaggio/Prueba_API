@@ -25,8 +25,7 @@ def search_queryA(query=None):
         b+=scrapvea(l)
         return (b)
     except Exception as e:
-        b+="/n"
-        return (b)
+        return ("no se pudo acceder")
 
 #@app.route("/coto/search/<query>")
 #def search_queryA(query=None):
@@ -40,9 +39,6 @@ def search_queryA(query=None):
 #        return (b)
 
 
-#@app.route("/api/<query>")
-#def search_query(query=None):
-#	return(query)
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
@@ -58,7 +54,6 @@ def scrapvea(site):
     b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price"}).text
     b+=","
     b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price"}).text    
-    b+="\n"
 
     return b
 
