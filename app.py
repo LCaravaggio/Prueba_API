@@ -10,10 +10,11 @@ import datetime
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
+@app.route("/")
 @cross_origin()
-def index():
-    return ("Bienvenido a la API!")
+def welcome():
+    return (
+        f"Bienvenido a la API!<br/>")
  
 
 @app.route("/vea/search/<query>")
