@@ -27,16 +27,16 @@ def search_queryA(query=None):
     except Exception as e:
         return ("no se pudo acceder")
 
-#@app.route("/coto/search/<query>")
-#def search_queryA(query=None):
-#    b=""
-#    l="https://www.coto.com.ar/"+query+"/p"
-#    try:
-#        b+=scrapcoto(l)
-#        return (b)
-#    except Exception as e:
-#        b+="/n"
-#        return (b)
+@app.route("/coto/search/<query>")
+def search_queryA(query=None):
+    b=""
+    l="https://www.coto.com.ar/"+query+"/p"
+    try:
+        b+=scrapcoto(l)
+        return (b)
+    except Exception as e:
+        b+="/n"
+        return (b)
 
 
 
@@ -59,17 +59,16 @@ def scrapvea(site):
 
 
 
-#def scrapcoto(site):
-#    r = requests.get(site)
-#    b=""
-#    
-#    soup = BeautifulSoup(r.content, 'html.parser')
-#    b+=soup.find("h1", {"class": "product_page"}).text    
-#    b+=";"
-#    b+=soup.find("span", {"class": "atg_store_newPrice"}).text
-#    b+="\n"
-#
-#    return b
+def scrapcoto(site):
+    r = requests.get(site)
+    b=""
+    
+    soup = BeautifulSoup(r.content, 'html.parser')
+    b+=soup.find("h1", {"class": "product_page"}).text.replace(" ","").replace("\n","").replace("\r","").replace(";","").replace("\t","") + ";"     
+    b+=soup.find("span", {"class": "atg_store_newPrice"}).text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("\t","").replace("PRECIOCONTADO","").replace("PRECIOREGULAR","") + "\n" 
+    b+="\n"
+
+    return b
 
 @app.errorhandler(500)
 def internal_error(error):
