@@ -33,7 +33,7 @@ def search_queryA(querycoto=None):
     b=""
     newquery="https://www.cotodigital3.com.ar/sitios/cdigi/producto/-salchicha-paladini-paq-6-uni-225-grm/_/A-00014508-00014508-200"
     
-try:
+    try:
         b+=scrapcoto(newquery)
         return (b)
     except Exception as e:
