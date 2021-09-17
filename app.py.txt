@@ -13,22 +13,12 @@ CORS(app)
 @app.route('/')
 @cross_origin()
 def index():
-    b=""
-    for l in lista(): 	
-        try:
-            b+=scrap(l)
-        except:
-            b+="/n"
-    now = datetime.datetime.now()
-    sumar=datetime.timedelta(hours = -3)
-    now=now+sumar
-    nw=str(now.strftime("%Y-%m-%d %H-%M-%S"))
-    return Response(b,mimetype="text/csv",headers={"Content-disposition": "attachment; filename="+nw+".csv"})
+    return ("Bienvenido a la API!")
  
 
 
 
-@app.route("/api/search/<query>")
+@app.route("/vea/search/<query>")
 def search_queryA(query=None):
     b=""
     l="https://www.vea.com.ar/"+query+"/p"
@@ -36,7 +26,20 @@ def search_queryA(query=None):
         b+=scrap(l)
         return (b)
     except Exception as e:
-        return ("Error API: "+f"{e}" + query)
+        b+="/n"
+        return (b)
+
+@app.route("/coto/search/<query>")
+def search_queryA(query=None):
+    b=""
+    l="https://www.vea.com.ar/"+query+"/p"
+    try:
+        b+=scrapcoto(l)
+        return (b)
+    except Exception as e:
+        b+="/n"
+        return (b)
+
 
 @app.route("/api/<query>")
 def search_query(query=None):
@@ -60,6 +63,19 @@ def scrap(site):
 
     return b
 
+
+
+def scrapcoto(site):
+    r = requests.get(site)
+    b=""
+    
+    soup = BeautifulSoup(r.content, 'html.parser')
+    b+=soup.find("h1", {"class": "product_page"}).text    
+    b+=";"
+    b+=soup.find("span", {"class": "atg_store_newPrice"}).text
+    b+="\n"
+
+    return b
 
 @app.errorhandler(500)
 def internal_error(error):
