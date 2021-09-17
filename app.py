@@ -16,14 +16,12 @@ def index():
     return ("Bienvenido a la API!")
  
 
-
-
 @app.route("/vea/search/<query>")
 def search_queryA(query=None):
     b=""
     l="https://www.vea.com.ar/"+query+"/p"
     try:
-        b+=scrap(l)
+        b+=scrapvea(l)
         return (b)
     except Exception as e:
         b+="/n"
@@ -32,7 +30,7 @@ def search_queryA(query=None):
 @app.route("/coto/search/<query>")
 def search_queryA(query=None):
     b=""
-    l="https://www.vea.com.ar/"+query+"/p"
+    l="https://www.coto.com.ar/"+query+"/p"
     try:
         b+=scrapcoto(l)
         return (b)
@@ -49,7 +47,7 @@ if __name__ == "__main__":
     app.run(port=8000, debug=True)
 
 
-def scrap(site):
+def scrapvea(site):
     r = requests.get(site)
     b=""
     
@@ -84,9 +82,3 @@ def internal_error(error):
 @app.errorhandler(404)
 def not_found(error):
     return "404 error",404
-
-
-def lista(): 
-    return {"https://www.vea.com.ar/galletitas-lincoln-angry-birds/p",
-"https://www.vea.com.ar/galletitas-criollitas-de-agua-x100gr/p"
-}
