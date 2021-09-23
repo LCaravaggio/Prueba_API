@@ -34,7 +34,7 @@ def search_queryB(querycoto=None):
     med="/_/"
     last=querycoto[-23:]
     ini=querycoto.replace(last,"")
-    newquerry="https://www.cotodigital3.com.ar/sitios/cdigi/producto/"+ini+med+last
+    newquery="https://www.cotodigital3.com.ar/sitios/cdigi/producto/"+ini+med+last
     try:
         b+=scrapcoto(newquery)
         return (b)
