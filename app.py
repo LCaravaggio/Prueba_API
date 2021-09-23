@@ -20,7 +20,7 @@ def welcome():
 @app.route("/vea/search/<query>")
 def search_queryA(query=None):
     b=""
-    l="https://www.vea.com.ar/"+query+"/p"
+    l="https://www.vea.com.ar/"+query
     try:
         b+=scrapvea(l)
         return (b)
