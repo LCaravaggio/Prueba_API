@@ -28,6 +28,29 @@ def search_queryA(query=None):
         return ("no se pudo acceder")
 
 
+@app.route("/carrefour/search/<query>")
+def search_queryA(query=None):
+    b=""
+    l="https://www.carrefour.com.ar/"+query+"/p"
+    try:
+        b+=scrapcarrefour(l)
+        return (b)
+    except Exception as e:
+        return ("no se pudo acceder")
+
+
+@app.route("/dia/search/<query>")
+def search_queryA(query=None):
+    b=""
+    l="https://diaonline.supermercadosdia.com.ar/"+query+"/p"
+    try:
+        b+=scrapdia(l)
+        return (b)
+    except Exception as e:
+        return ("no se pudo acceder")
+
+
+
 @app.route("/coto/search/<querycoto>")
 def search_queryB(querycoto=None):
     b=""
@@ -69,6 +92,31 @@ def scrapcoto(sitecoto):
     b+=soup.find("span", {"class": "atg_store_newPrice"}).text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("\t","").replace("PRECIOCONTADO","").replace("PRECIOREGULAR","") 
     return b
 
+def scrapcarrefour(site):
+    r = requests.get(site)
+    b=""
+    
+    soup = BeautifulSoup(r.content, 'html.parser')
+    b+=soup.find("span", {"class": "vtex-breadcrumb-1-x-term vtex-breadcrumb-1-x-term--breadcrumb-products ph2 c-on-base"}).text
+    b+=";"
+    ini=str(soup).find('"Precio x unidad","values":{"type":"json","json":["($')
+    b+=str(soup)[ini+53:ini+59]
+
+    return b
+
+def scrapdia(site):
+    r = requests.get(site)
+    b=""
+    
+    soup = BeautifulSoup(r.content, 'html.parser')
+    ini=str(soup).find('},"productName":"')
+    fin=str(soup).find('","productBrandId":')
+    b+=str(soup)[ini+17:fin]
+    b+=";"
+    ini=str(soup).find('fullSellingPrice":"')
+    b+=str(soup)[ini+19:ini+26]
+    
+    return b
 
 @app.errorhandler(500)
 def internal_error(error):
