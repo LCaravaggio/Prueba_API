@@ -18,7 +18,7 @@ def welcome():
  
 
 @app.route("/vea/search/<query>")
-def search_queryA(query=None):
+def search_query_vea(query=None):
     b=""
     l="https://www.vea.com.ar/"+query+"/p"
     try:
@@ -29,7 +29,7 @@ def search_queryA(query=None):
 
 
 @app.route("/carrefour/search/<query>")
-def search_queryA(query=None):
+def search_query_carr(query=None):
     b=""
     l="https://www.carrefour.com.ar/"+query+"/p"
     try:
@@ -40,7 +40,7 @@ def search_queryA(query=None):
 
 
 @app.route("/dia/search/<query>")
-def search_queryA(query=None):
+def search_query_dia(query=None):
     b=""
     l="https://diaonline.supermercadosdia.com.ar/"+query+"/p"
     try:
@@ -52,7 +52,7 @@ def search_queryA(query=None):
 
 
 @app.route("/coto/search/<querycoto>")
-def search_queryB(querycoto=None):
+def search_query_coto(querycoto=None):
     b=""
     med="/_/"
     last=querycoto[-23:]
