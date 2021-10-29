@@ -97,10 +97,13 @@ def scrapcarrefour(site):
     b=""
     
     soup = BeautifulSoup(r.content, 'html.parser')
-    b+=soup.find("span", {"class": "vtex-breadcrumb-1-x-term vtex-breadcrumb-1-x-term--breadcrumb-products ph2 c-on-base"}).text
+    ini=str(soup).find('name="robots"/><meta content="')
+    fin=str(soup).find('" data-react-helmet="true" name="description"/>')
+    b+=str(soup)[ini+30:fin]
+    
     b+=";"
-    ini=str(soup).find('"Precio x unidad","values":{"type":"json","json":["($')
-    b+=str(soup)[ini+53:ini+59]
+    ini=str(soup).find('":"Precio x unidad","values":{"type":"json","json":["($')
+    b+=str(soup)[ini+55:ini+61]
 
     return b
 
