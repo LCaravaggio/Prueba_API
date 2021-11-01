@@ -88,8 +88,9 @@ def scrapcarrefour(sitecarrefour):
     b+=str(soup)[ini+27:fin]
     
     b+=";"
-    ini=str(soup).find('":"Precio x unidad","values":{"type":"json","json":["($')
-    b+=str(soup)[ini+55:ini+61]
+    ini=str(soup).find('"typename":"Teaser"}],"Price":')
+    fin=str(soup).find(',"ListPrice":')
+    b+=str(soup)[ini+30:fin]
 
     return b
 
