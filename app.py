@@ -19,68 +19,54 @@ def welcome():
 
 @app.route("/vea/search/<query>")
 def search_query_vea(query=None):
-    b=""
     l="https://www.vea.com.ar/"+query+"/p"
     try:
-        b+=scrapvea(l)
-        return (b)
+        return (scrapvea(l))
     except Exception as e:
-        return ("no se pudo acceder")
+        r = requests.get(l)
+        soup = BeautifulSoup(r.content, 'html.parser')
+        return ("no se pudo acceder a VEA")
 
 
 @app.route("/carrefour/search/<query>")
 def search_query_carr(query=None):
-    b=""
     l="https://www.carrefour.com.ar/"+query+"/p"
     try:
-        b+=scrapcarrefour(l)
-        return (b)
+        return (scrapcarrefour(l))
     except Exception as e:
-        return ("no se pudo acceder")
-
+        return ("no se pudo acceder a Carrefour")
 
 @app.route("/dia/search/<query>")
 def search_query_dia(query=None):
-    b=""
     l="https://diaonline.supermercadosdia.com.ar/"+query+"/p"
     try:
-        b+=scrapdia(l)
-        return (b)
+        return (scrapdia(l))
     except Exception as e:
-        return ("no se pudo acceder")
-
-
+        return ("no se pudo acceder a Dia")
 
 @app.route("/coto/search/<querycoto>")
 def search_query_coto(querycoto=None):
-    b=""
     med="/_/"
     last=querycoto[-23:]
     ini=querycoto.replace(last,"")
     newquery="https://www.cotodigital3.com.ar/sitios/cdigi/producto/"+ini+med+last
     try:
-        b+=scrapcoto(newquery)
-        return (b)
+        return (scrapcoto(newquery))
     except Exception as e:
-        return ("no se pudo acceder")
-
-
+        return ("no se pudo acceder a Coto")
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
 
 
-def scrapvea(site):
-    r = requests.get(site)
-    b=""
-    
+def scrapvea(sitevea):
+    r = requests.get(sitevea)
+    b="" 
     soup = BeautifulSoup(r.content, 'html.parser')
-    b+=soup.find("span", {"class": "vtex-breadcrumb-1-x-term vtex-breadcrumb-1-x-term--breadcrumb-style ph2 c-on-base"}).text    
-    b+=";"
-    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyInteger vtex-product-price-1-x-currencyInteger--shelf-main-selling-price"}).text
-    b+=","
-    b+=soup.find("span", {"class": "vtex-product-price-1-x-currencyFraction vtex-product-price-1-x-currencyFraction--shelf-main-selling-price"}).text    
-
+    b+=soup.find('span', {'class':'vtex-store-components-3-x-productBrand'}).text.replace(" ","").replace("\n","").replace("\r","") + ";"
+    ini=str(soup).find('"teasers":[],"Price":')
+    fin=str(soup).find(',"ListPrice":')
+    b+=str(soup)[ini+21:fin]
     return b
 
 
@@ -92,14 +78,14 @@ def scrapcoto(sitecoto):
     b+=soup.find("span", {"class": "atg_store_newPrice"}).text.replace("$","").replace(" ","").replace("\n","").replace("\r","").replace("\t","").replace("PRECIOCONTADO","").replace("PRECIOREGULAR","") 
     return b
 
-def scrapcarrefour(site):
-    r = requests.get(site)
+def scrapcarrefour(sitecarrefour):
+    r = requests.get(sitecarrefour)
     b=""
     
     soup = BeautifulSoup(r.content, 'html.parser')
-    ini=str(soup).find('name="robots"/><meta content="')
-    fin=str(soup).find('" data-react-helmet="true" name="description"/>')
-    b+=str(soup)[ini+30:fin]
+    ini=str(soup).find('="og:type"/><meta content="')
+    fin=str(soup).find('" data-react-helmet="true" property="og:title"/><meta ')
+    b+=str(soup)[ini+27:fin]
     
     b+=";"
     ini=str(soup).find('":"Precio x unidad","values":{"type":"json","json":["($')
@@ -107,8 +93,8 @@ def scrapcarrefour(site):
 
     return b
 
-def scrapdia(site):
-    r = requests.get(site)
+def scrapdia(sitedia):
+    r = requests.get(sitedia)
     b=""
     
     soup = BeautifulSoup(r.content, 'html.parser')
