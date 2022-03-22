@@ -103,8 +103,9 @@ def scrapdia(sitedia):
     fin=str(soup).find('","productBrandId":')
     b+=str(soup)[ini+17:fin]
     b+=";"
-    ini=str(soup).find('fullSellingPrice":"')
-    b+=str(soup)[ini+19:ini+26]
+    ini=str(soup).find('bestPriceFormated":"')
+    fin=str(soup).find('","bestPrice')
+    b+=str(soup)[ini+22:fin]
     
     return b
 
