@@ -99,13 +99,13 @@ def scrapdia(sitedia):
     b=""
     
     soup = BeautifulSoup(r.content, 'html.parser')
-    ini=str(soup).find('},"productName":"')
-    fin=str(soup).find('","productBrandId":')
-    b+=str(soup)[ini+17:fin]
+    ini=str(soup).find(',"name":"')
+    fin=str(soup).find('","brand":{"@type":')
+    b+=str(soup)[ini+9:fin]
     b+=";"
-    ini=str(soup).find('bestPriceFormated":"')
-    fin=str(soup).find('","bestPrice')
-    b+=str(soup)[ini+22:fin]
+    ini=str(soup).find('"product:availability"/><meta content="')
+    fin=str(soup).find('" data-react-helmet="true" property="product:price:amount"/>')
+    b+=str(soup)[ini+39:fin]
     
     return b
 
