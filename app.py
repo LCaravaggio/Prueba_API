@@ -105,7 +105,7 @@ def scrapdia(sitedia):
     b+=";"
     ini=str(soup).find('"product:availability"/><meta content="')
     fin=str(soup).find('" data-react-helmet="true" property="product:price:amount"/>')
-    b+=str(soup)[ini+39:fin]
+    if fin!=-1: b+=str(soup)[ini+39:fin]
     
     return b
 
