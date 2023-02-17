@@ -10,3 +10,9 @@ La API recibe como parámetro el identificador: </br>
 
 
 La página web, en cambio, recibe la URL entera.  </br>
+
+# Novedades Agosto 2022
+De acuerdo a los cambios en la política de precios de Heroku, la API (y por tanto la web) dejarán de estar disponibles a partir del 28/11/2022: 
+https://blog.heroku.com/next-chapter
+
+Aún así, puede encontrar los scrapers actualizados en https://github.com/LCaravaggio/scrapers
